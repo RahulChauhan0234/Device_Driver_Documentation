@@ -1,0 +1,48 @@
+Interrupt:
+	Interrrupt is a simply a signal that the hardware can send when it wants the processor attention.
+
+Installing Interrupt Handler:
+	int request_irq(	/* interrupt number being requested */ 
+					unsigned int irq,
+				/* Pointer to the handling function being installed */ 
+					irqreturn_t (*handler)(int,void*,struct pt_regs *),
+				/* expected bit mask options related tointerrupt management */ 
+					unsigned long flags,
+				/* string passed to request_irq is used in /proc/interrupts to show the owner of interrupt */
+					const char *dev_name,
+				/* Pointer used for shared Interrupt Lines
+				   It is unique identifier that is used when the interrupt line free
+				   and also used by the driver to points to its own private data area( to identify  which device is 					   interrupting )
+				   if interrupt is not shared, dev_id can be NULL */
+					void *dev_id
+			);
+
+How can we set the bits in flags ?
+
+SA_INTERRUPT
+	Indicates a fast interrupt handler.
+	Fast interrupt handlers are executed with interrupts disabled on the current processor.
+SA_SHIRQ
+	This bit signals that the interrupt  can be shared between the devices.
+SA_SAMPLE_RANDOM
+
+
+
+Where can we install the interuupt handler?
+	1. At the time of driver initialization.
+	2. when the device is first opened.
+	
+
+Interrupt Related File:
+
+there are two files related to Interrupt
+1./proc/interrupts
+
+2./proc/states
+
+Fast and slow Handlers ?
+
+Fast Handlers:
+
+Slow Handlers:
+
